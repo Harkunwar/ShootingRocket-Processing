@@ -2,7 +2,7 @@ ArrayList<Float> velocity = new ArrayList<Float>();
 ArrayList<Float> shootx = new ArrayList<Float>();
 ArrayList<Float> shooty = new ArrayList<Float>();
 void setup (){
-  size(500,500);
+  size(1000,1000);
   rectMode(CENTER);
 }
 
@@ -37,7 +37,11 @@ void draw(){
     velocity.set(i,velocity.get(i)+5);
     line(shootx.get(i)-17.5,shooty.get(i)-10-velocity.get(i),shootx.get(i)-17.5,shooty.get(i)-20-velocity.get(i));
     line(shootx.get(i)+17.5,shooty.get(i)-10-velocity.get(i),shootx.get(i)+17.5,shooty.get(i)-20-velocity.get(i));
-    
+    if (shooty.get(i)-10-velocity.get(i)<0) {
+      shootx.remove(i);
+      shooty.remove(i);
+      velocity.remove(i);
+    }
   }
 }
 
